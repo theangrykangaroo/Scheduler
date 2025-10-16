@@ -1,0 +1,6 @@
+docker network create flowise-network
+
+docker build -t appointment-service:enhanced .
+docker stop my-appointment-api
+docker rm my-appointment-api
+docker run -d -p 8000:8000 --name my-appointment-api --network flowise-network appointment-service:enhanced
